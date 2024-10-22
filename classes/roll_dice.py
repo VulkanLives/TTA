@@ -1,14 +1,16 @@
+
 import random
 
+occurance_list = [0,0,0,0,0,0]
 roll_order = []
-occurance_list = [0, 0, 0, 0, 0, 0]
-
 class RollDice:
+    # def reset(self):
 
     def __init__(self,number):
-        self.occurance_list = occurance_list
+        x = int(number)
         self.roll_order = roll_order
-        x=int(number)
+        self.occurance_list = occurance_list
+
         for die in range(x):
            roll = random.randint(1,6)  # roll a dice
            roll_order.append(roll)  # add dice result to array
@@ -21,7 +23,7 @@ class RollDice:
            elif int(roll) == 4:
                occurance_list[3] += 1
            elif int(roll) == 3:
-               occurance_list[2] += 1
+               occurance_list[2]+=1
            elif int(roll) == 2:
                occurance_list[1] += 1
            else:
@@ -29,8 +31,13 @@ class RollDice:
         print("occurance_list = " +str(occurance_list))
         print("roll order = " + str(roll_order))
         print("no of dice rolled = " + str(x))
-        return
+        olist = occurance_list
+        #return
 
-    print("occurance_list = " + str(occurance_list))
+        print("occurance_list = " + str(occurance_list))
+        print("roll order = " + str(roll_order))
+print("occurance_list = " + str(occurance_list))
 
-    print("roll order = " + str(roll_order))
+#RollDice(4)
+
+

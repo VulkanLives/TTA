@@ -4,10 +4,10 @@ from tkinter import messagebox
 import customtkinter as ctk
 from customtkinter import CTkImage
 
-import roll_dice as rd
+from classes import roll_dice as rd
 from PIL import Image
 
-from imageBank import ImageBank, background_imgs
+from classes.imageBank import ImageBank
 
 #from imageBank import background_imgs
 
@@ -44,7 +44,7 @@ dice_order_frame = Tk.LabelFrame(master=top_frame, text="Order of the rolls")
 
 frame3 = root.CTkFrame(master=bottom_frame, fg_color="orange", border_width=2, border_color="black")
 frame3.pack()
-bg_img = root.CTkImage(Image.open("app_images/backgrounds/scene2.png"), size=(300, 300))
+bg_img = root.CTkImage(Image.open("../app_images/backgrounds/scene2.png"), size=(300, 300))
 bg_img_label = ctk.CTkLabel(master=frame3, image=bg_img)
 bg_img_label.pack(side = 'left',fill = 'both', expand = 1)
 

@@ -192,7 +192,7 @@ rolldice_numpy_btn = ctk.CTkButton(master=main_frame, text="Roll Dice w/ Numpy",
 todo_list = ctk.CTkButton(master=main_frame, text="To Do list", command=todo_list).pack(pady=5)
 image_work_btn = ctk.CTkButton(master=main_frame, text="Image Work").pack(pady=5)
 detect_system_btn = ctk.CTkButton(master=main_frame, text="System Detection").pack(pady=5)
-
+launch_app_button = ctk.CTkButton(master=main_frame, text="Table Top App").pack(pady=5)
 # rolldice_lite_btn = ctk.CTkButton(master=btn_frame, text="Roll Dice Lite")
 main_frame.pack(side="top", fill="both", expand=True)
 

@@ -32,7 +32,7 @@ print(f"mean of sum_of_rolls: {np.mean(sum_of_rolls):.2f}\nvariance of sum_of_ro
 print(f"covariance between first and second roll:\n{np.cov(first_rolls, second_rolls)}")
 
 # Plot histogram
-sns.histplot(sum_of_rolls, stat = "probability")
-plt.show()
+# sns.histplot(sum_of_rolls, stat = "probability")
+# plt.show()
 
 

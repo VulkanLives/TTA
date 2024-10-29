@@ -6,12 +6,13 @@ from classes import roll_dice as rd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import subprocess
 
 root = ctk.CTk()
 
 ctk.set_appearance_mode("system")
 ctk.set_default_color_theme("blue")
-root.geometry("300x200")
+root.geometry("300x300")
 
 program_lib = []
 # show_roll_sequence = False
@@ -37,6 +38,7 @@ def todo_list():
 
 
 def new():
+    #openn a new window with change size options
     new_window = ctk.CTkToplevel(root, fg_color="white")
     new_window.title("This is a new window!")
     new_window.geometry("400x200")
@@ -46,6 +48,27 @@ def new():
         new_window.destroy()
         new_window.update()
 
+    def update_size():
+        def revert():
+            revert_btn.forget()
+            new_window.geometry("400x200")
+            update_win_btn.pack()
+        new_window.geometry("400x800")
+        update_win_btn.forget()
+        revert_btn = ctk.CTkButton(new_window, text= "revert size", command= revert)
+        revert_btn.pack()
+
+    close_win_btn = ctk.CTkButton(new_window, text="Close", command=close)
+    close_win_btn.pack()
+    update_win_btn = ctk.CTkButton(new_window, text="change size", command= update_size)
+    update_win_btn.pack()
+
+
+
+def launch_tta_app():
+    subprocess.call(["python", "tta_app.py"])
+def launch_numpy_roller():
+    subprocess.call(["python", "numpy_work/numpy_roller_working.py"])
 
 def dice_win(meth_choice):
     method_choice = meth_choice
@@ -98,12 +121,15 @@ def dice_win(meth_choice):
         print(opt)
 
     def roll_numpy():
-       # res_frame.pack_forget()
+    # first shot at dice roller using NumPY instead of my RollDice class
+    # Roll Dice is inefficient at this point as I need to stop it creating
+    #initial array when the class is imported and instead create the array when the
+    # function is actaully called, but got a bit messy so leaaaving it for now
         font_setup = ctk.CTkFont(family='Helvetica',
                                  size=34, weight='bold')
         # Define different type of dice d6 = std di, d3 = 3 sides
         d6_sides = 6
-        d3_sides = 3
+        #d3_sides = 3
         # n_rolls = int
         try:
             # make sure of valid entry
@@ -192,9 +218,12 @@ rolldice_numpy_btn = ctk.CTkButton(master=main_frame, text="Roll Dice w/ Numpy",
 todo_list = ctk.CTkButton(master=main_frame, text="To Do list", command=todo_list).pack(pady=5)
 image_work_btn = ctk.CTkButton(master=main_frame, text="Image Work").pack(pady=5)
 detect_system_btn = ctk.CTkButton(master=main_frame, text="System Detection").pack(pady=5)
-launch_app_button = ctk.CTkButton(master=main_frame, text="Table Top App").pack(pady=5)
+launch_app_button = ctk.CTkButton(master=main_frame, text="Table Top App", command= launch_tta_app).pack(pady=5)
+numpy_roller = ctk.CTkButton(master=main_frame, text="Numpy roller", command= launch_numpy_roller).pack(pady=5)
+
 # rolldice_lite_btn = ctk.CTkButton(master=btn_frame, text="Roll Dice Lite")
 main_frame.pack(side="top", fill="both", expand=True)
+
 
 root.mainloop()
 
